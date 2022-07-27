@@ -54,7 +54,7 @@
   width: 100vw;
 
   #form{
-    widows: 85%;
+    widows: 100%;
     height: fit-content;
     margin: 3vh;
     padding: 15px;
@@ -72,14 +72,60 @@
         color: whitesmoke;
       }
     }
+    #action{
+      margin: 5%;
+      display: grid;
+      justify-items: center;
+
+      input, textarea{
+        margin: 2%;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        
+      }
+      textarea{
+        height: 125px;
+      }
+    }
+    #submit{
+      background-color: #488fef;
+      color: whitesmoke;
+      display: block;
+      width: 8vw;
+      justify-self: end;
+    }
   }
   .font_color{
       color: #6aaaff;
   }
 }
 
-#submit{
-  background-color: #488fef;
-  color: whitesmoke;
-}
+
+
+    @media screen and (min-width: 700px) {
+            #contactForm {
+                #form {
+                    width: 625px;
+                    h3 {
+                        margin-bottom: 2vh;
+                    }
+                    #action {
+                        margin-top: 3vh;
+                    }
+                }
+            }
+        }
+    @media screen and (min-width: 1100px) {
+        #contactForm {
+            #form {
+                width: 80%;
+                display: grid;
+                p {
+                    width: 75%;
+                    justify-self: center;
+                }
+            }
+        }
+    }
 </style>
