@@ -6,7 +6,7 @@
             <v-parallax
             dark
             height="25%"
-            src="https://img.freepik.com/free-vector/hazy-black-ink-texture-with-brushstrokes_125540-1360.jpg?w=1380&t=st=1658873055~exp=1658873655~hmac=8b894974cb761bd9dbc3ed7951fe249b08e647b88cce44deb071a3fb3fb9161f">
+            src="https://cdn.wallpapersafari.com/37/9/Yj3WSM.jpg">
             <v-app-bar-title class="text-center justify-center ">
                 <h1 class="font-weight-bold text-h2 font_color">
                 Eric Stretton

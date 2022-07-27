@@ -1,173 +1,85 @@
 <template>
-    <v-container>
+    <v-container id="contactForm">
+      
         <v-subheader class="text-center justify-center py-6">
             <h3 class="font-weight-bold text-h3 font_color">
                 Contact
             </h3>
         </v-subheader>
-        <v-container>
-            <validation-observer
-            ref="observer"
-            v-slot="{ invalid }"
-            >
-            <form @submit.prevent="submit">
-            <validation-provider
-                v-slot="{ errors }"
-                name="Name"
-                rules="required|max:10"
-            >
-            <v-text-field
-            v-model="name"
-            :counter="10"
-            :error-messages="errors"
-            label="Name"
-            required
-            ></v-text-field>
-            </validation-provider>
+        <v-container id="form">
+            <h3>Let's Collaborate</h3>
+            <p>Please use the form below to contact me for my resume, 
+              job opportunities, or to discuss and collaborate! Feel free to email me as well @ 
+              <a href="mailto:eric.stretton@gmail.com">eric.stretton@gmail.com</a>
+            </p>
 
-            <validation-provider
-                v-slot="{ errors }"
-                name="phoneNumber"
-                :rules="{
-                required: true,
-                digits: 7,
-                regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$'
-                }"
-            >
-            <v-text-field
-            v-model="phoneNumber"
-            :counter="7"
-            :error-messages="errors"
-            label="Phone Number"
-            required
-            ></v-text-field>
-            </validation-provider>
-            <validation-provider
-                v-slot="{ errors }"
-                name="email"
-                rules="required|email"
-            >
-            <v-text-field
-            v-model="email"
-            :error-messages="errors"
-            label="E-mail"
-            required
-            ></v-text-field>
-            </validation-provider>
-            <validation-provider
-                v-slot="{ errors }"
-                name="select"
-                rules="required"
-            >
-            <v-select
-            v-model="select"
-            :items="items"
-            :error-messages="errors"
-            label="Select"
-            data-vv-name="select"
-            required
-            ></v-select>
-            </validation-provider>
-            <validation-provider
-                v-slot="{ errors }"
-                rules="required"
-                name="checkbox"
-            >
-            <v-checkbox
-            v-model="checkbox"
-            :error-messages="errors"
-            value="1"
-            label="Option"
-            type="checkbox"
-            required
-            ></v-checkbox>
-        </validation-provider>
-
-        <v-btn
-            class="mr-4"
-            type="submit"
-            :disabled="invalid"
-        >
-            submit
-        </v-btn>
-        <v-btn @click="clear">
-            clear
-        </v-btn>
-        </form>
-    </validation-observer>
+            <form id="action" action="https://formsubmit.co/eric.stretton@gmail.com" method="POST"></form>
+              <input class="inputColor" type="text" name="name" placeholder="Name" required>
+              <input class="inputColor" type="email" name="email" placeholder="Email" required>
+              <input class="inputColor" type="text" name="company" placeholder="Company (Optional)" >
+              <textarea class="inputColor" name="content" placeholder="A brief message here..." required></textarea>
+              <v-btn
+              id="submit"
+              type="submit"
+              >Send</v-btn>
         </v-container>
+      
     </v-container>
 </template>
 
 <script>
-  import { required, digits, email, max, regex } from 'vee-validate/dist/rules'
-  import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
+ 
 
-  setInteractionMode('eager')
-
-  extend('digits', {
-    ...digits,
-    message: '{_field_} needs to be {length} digits. ({_value_})',
-  })
-
-  extend('required', {
-    ...required,
-    message: '{_field_} can not be empty',
-  })
-
-  extend('max', {
-    ...max,
-    message: '{_field_} may not be greater than {length} characters',
-  })
-
-  extend('regex', {
-    ...regex,
-    message: '{_field_} {_value_} does not match {regex}',
-  })
-
-  extend('email', {
-    ...email,
-    message: 'Email must be valid',
-  })
-
+  
   export default {
     name: "ContactMe",
-    components: {
-      ValidationProvider,
-      ValidationObserver,
-    },
-    data: () => ({
-      name: '',
-      phoneNumber: '',
-      email: '',
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
-      checkbox: null,
-    }),
-
-    methods: {
-      submit () {
-        this.$refs.observer.validate()
-      },
-      clear () {
-        this.name = ''
-        this.phoneNumber = ''
-        this.email = ''
-        this.select = null
-        this.checkbox = null
-        this.$refs.observer.reset()
-      },
-    },
+    data() {
+      return {
+        name: '',
+        email: '',
+        company: '',
+        content: ''
+      }
+    }
+    
   }
 </script>
 
 <style lang="scss" scoped>
-.font_color{
-    color: #6aaaff;
+
+#contactForm{
+  display: grid;
+  justify-items: center;
+  height: fit-content;
+  width: 100vw;
+
+  #form{
+    widows: 85%;
+    height: fit-content;
+    margin: 3vh;
+    padding: 15px;
+    background-color: #343030;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    .inputColor{
+      color: whitesmoke;
+      opacity: 0.75;
+    }
+    p, h3{
+      opacity: 0.75;
+      color: whitesmoke;
+      a{
+        color: whitesmoke;
+      }
+    }
+  }
+  .font_color{
+      color: #6aaaff;
+  }
+}
+
+#submit{
+  background-color: #488fef;
+  color: whitesmoke;
 }
 </style>
